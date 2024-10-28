@@ -20,9 +20,8 @@ public class Client {
         } else if (command.startsWith("_delete_ ")) {
             if (db.delData(command.substring(9))) {
                 System.out.println("Successful delete");
-            } else {
+            } else
                 System.out.println("Failure on delete!!!");
-            }
         }
         else if (command.startsWith("_quit_ ")) {
             return false;
