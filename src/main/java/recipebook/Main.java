@@ -2,10 +2,9 @@ package recipebook;
 
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.concurrent.ExecutionException;
 
 public class Main {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    public static void main(String[] args) {
         Client client = new Client();
         String input;
 
