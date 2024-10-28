@@ -1,6 +1,7 @@
 package recipebook;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Client {
     private Mongo db = new Mongo();
@@ -17,6 +18,13 @@ public class Client {
                 System.out.println("Recipe: " + allDatum[0] + "\n");
                 System.out.println(allDatum[1] + "\n");
             }
+        } else if (command.startsWith("_add_ ")) {
+            String[] data = command.split(" ");
+            String recipeName = data[1];
+            String description = data[2];
+            if (db.setData(recipeName, description))
+                System.out.println("Recipe added");
+            else System.out.println("Failure!(");
         } else if (command.startsWith("_delete_ ")) {
             if (db.delData(command.substring(9))) {
                 System.out.println("Successful delete");
@@ -26,6 +34,8 @@ public class Client {
         }
         else if (command.startsWith("_quit_ ")) {
             return false;
+        } else {
+            System.out.println("Wrong command");
         }
         return false;
     }
