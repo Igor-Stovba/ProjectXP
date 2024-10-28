@@ -18,12 +18,13 @@ public class RecipeWindow extends JFrame implements RecipeListener {
     private JTextArea recipeDescription;
     private JTextField nameField;
     private JTextField descriptionField;
+    private final Mongo db = new Mongo();
 
     private List<String[]> recipes;
 
     public RecipeWindow() {
         setTitle("Рецепты");
-        setSize(500, 400);
+        setSize(1000, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -78,6 +79,8 @@ public class RecipeWindow extends JFrame implements RecipeListener {
         String name = nameField.getText().trim();
         String description = descriptionField.getText().trim();
 
+        db.setData(name, description);
+
         if (!name.isEmpty() && !description.isEmpty()) {
             recipes.add(new String[] {name, description});
             recipeListModel.addElement(name);
@@ -90,6 +93,8 @@ public class RecipeWindow extends JFrame implements RecipeListener {
 
     private void deleteRecipe() {
         String name = nameField.getText().trim();
+
+        db.delData(name);
 
         if (!name.isEmpty()) {
             boolean removed = false;
@@ -134,12 +139,6 @@ public class RecipeWindow extends JFrame implements RecipeListener {
         SwingUtilities.invokeLater(() -> {
             RecipeWindow window = new RecipeWindow();
             window.setVisible(true);
-
-            String[][] initialRecipes = {
-                    {"Борщ", "Классический рецепт борща с капустой и свеклой."},
-                    {"Плов", "Ароматный плов с курицей и специями."}
-            };
-            window.onRecipesUpdated(initialRecipes);
         });
     }
 }

@@ -15,6 +15,4 @@ A simple desktop application for managing recipes. This app enables users to add
 * MongoDB (for Java)
 
 # Запуск:
-* Необхожим Gradle 8+
-*  ./gradlew build
-*  ./gradlew run --console=plain
+* Запуск проводить из IDE Inteleji Idea
