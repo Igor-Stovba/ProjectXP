@@ -13,8 +13,10 @@ public class Main {
         System.out.println("Welcome to your RecipeBook");
         System.out.println("===============");
 
-        System.out.println("\n\n\nWrite \"all\" to see all the recipes\nOr write \"find [name of recipe]\" to find excactly one)");
-        System.out.println("Input _help_ for list of commands\n");
+        System.out.println("\n\n\nWrite \"_all_\" to see all the recipes");
+        System.out.println("Write \"_find_ [name of recipe]\" to find exactly one)");
+        System.out.println("Write \"_delete_ [recipeName]\" to delete exciting recipe");
+        System.out.println("Write \"_quit_\" to exit the application");
 
         Scanner scanner = new Scanner(System.in);
 
@@ -23,6 +25,6 @@ public class Main {
             input = scanner.nextLine();
             if (input.isEmpty()) continue;
             System.out.println();
-        } while (!client.processCommand(Objects.requireNonNull(input)));
+        } while (client.processCommand(Objects.requireNonNull(input)));
     }
 }
