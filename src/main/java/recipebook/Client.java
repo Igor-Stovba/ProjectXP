@@ -12,7 +12,7 @@ public class Client {
             String[] data = db.getData(search);
             System.out.println("Recipe: " + data[0] + "\n");
             System.out.println(data[1]);
-        } else if (command.startsWith("_all_ ")) {
+        } else if (command.startsWith("_all_")) {
             List<String[]> allData = db.getAllData();
             for (String[] allDatum : allData) {
                 System.out.println("Recipe: " + allDatum[0] + "\n");
@@ -36,6 +36,6 @@ public class Client {
         } else {
             System.out.println("Wrong command");
         }
-        return false;
+        return true;
     }
 }
