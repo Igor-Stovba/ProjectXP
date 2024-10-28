@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Client {
-    private Mongo db = new Mongo();
+    private final Mongo db = new Mongo();
 
     public boolean processCommand(String command) {
         if (command.startsWith("_find_ ")) {
@@ -32,7 +32,7 @@ public class Client {
                 System.out.println("Failure on delete!!!");
             }
         }
-        else if (command.startsWith("_quit_ ")) {
+        else if (command.startsWith("_quit_")) {
             return false;
         } else {
             System.out.println("Wrong command");
