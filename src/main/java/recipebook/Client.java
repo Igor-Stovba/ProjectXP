@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Client {
     private final Mongo db = new Mongo();
 
+
     public boolean processCommand(String command) {
         if (command.startsWith("_find_ ")) {
             String search = command.substring(7);
